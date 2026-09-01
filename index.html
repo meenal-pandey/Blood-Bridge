@@ -108,43 +108,66 @@ table{width:100%;border-collapse:collapse}th{background:#fafbfd;color:var(--mute
 .aiFactorsGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:15px}.aiFactorCard{padding:13px;border:1px solid var(--line);border-radius:12px;background:#fff}.aiFactorCard label{display:block;font-size:8px;font-weight:800;color:var(--muted);margin-bottom:6px;letter-spacing:.4px}.aiFactorCard input,.aiFactorCard select,.aiFactorCard textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:9px;background:#fafbfd;outline:none;font-size:10px}.aiFactorCard textarea{min-height:70px;resize:vertical}.aiScore{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}.aiScorePanel{padding:16px;border-radius:14px;border:1px solid var(--line);background:#fff}.aiScoreValue{font:800 30px Manrope;color:var(--navy)}.factorRows{display:grid;gap:7px;margin-top:10px}.factorRow{display:grid;grid-template-columns:170px 1fr 55px;gap:8px;align-items:center;font-size:8px}.factorTrack{height:7px;background:#edf0f4;border-radius:10px;overflow:hidden}.factorTrack i{display:block;height:100%;background:var(--green);border-radius:10px}.aiCandidate{border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:9px;display:grid;grid-template-columns:1fr auto;gap:10px}.aiCandidate strong{font-size:11px;color:var(--navy)}.aiCandidate small{display:block;color:var(--muted);font-size:8px;line-height:1.5;margin-top:3px}.aiCandidateScore{font:800 20px Manrope;color:var(--red)}.donorRegGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.donorRegGrid .field input,.donorRegGrid .field select,.donorRegGrid .field textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:9px;background:#fafbfd;outline:none;font-size:10px}.donorRegGrid .full{grid-column:1/-1}.consent{display:flex;gap:8px;align-items:flex-start;font-size:9px;color:var(--muted);line-height:1.5}.donorSuccess{display:none;padding:13px;border-radius:12px;background:var(--greenbg);color:var(--green);font-size:9px;margin-top:12px}.donorActions{display:flex;gap:8px;align-items:center;margin-top:14px}.liveMapFeatureGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}.liveFeature{padding:14px}.liveFeature b{display:block;font:800 12px Manrope;color:var(--navy)}.liveFeature span{display:block;margin-top:5px;font-size:8px;color:var(--muted);line-height:1.5}
 @media(max-width:1000px){.aiFactorsGrid,.donorRegGrid{grid-template-columns:1fr 1fr}.aiScore{grid-template-columns:1fr}.liveMapFeatureGrid{grid-template-columns:1fr}}
 @media(max-width:650px){.aiFactorsGrid,.donorRegGrid{grid-template-columns:1fr}.donorRegGrid .full{grid-column:auto}.factorRow{grid-template-columns:115px 1fr 45px}}
-</style>
+
+/* ===== ROUND 3 HARDENING ===== */
+.mobileMenuBtn{
+  display:none;
+  border:0;
+  background:var(--navy);
+  color:#fff;
+  width:38px;height:38px;border-radius:10px;
+  font-size:20px;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+.sidebarBackdrop{
+  display:none;
+  position:fixed;inset:0;background:rgba(0,0,0,.38);
+  z-index:90;
+}
+@media (max-width:950px){
+  .mobileMenuBtn{display:flex}
+  .sidebar{
+    position:fixed;left:0;top:0;bottom:0;
+    width:260px!important;
+    transform:translateX(-105%);
+    transition:transform .22s ease;
+    z-index:100;
+  }
+  .sidebar.mobileOpen{transform:translateX(0)}
+  .sidebar.mobileOpen + .sidebarBackdrop{display:block}
+  .logo b,.logo small,.menuTitle,.nav button span:last-child,.emergency{display:block}
+  .nav button{justify-content:flex-start}
+  .main{margin-left:0!important}
+  .topbar{padding-left:12px}
+}
+@media (max-width:650px){
+  .topbar{gap:8px}
+  .search{min-width:0;flex:1}
+  .search input{min-width:0;width:100%}
+  .topRight .role{display:none}
+  .content{padding:14px!important}
+  .modal{width:calc(100vw - 24px)!important;max-height:90vh;overflow:auto}
+  .mapPanelHead{flex-wrap:wrap;gap:8px}
+  .mapPanelHead>div:last-child{display:flex;flex-wrap:wrap;gap:6px}
+  .mapFilters{display:flex;flex-wrap:wrap;gap:6px}
+  .toolbar{display:grid!important;grid-template-columns:1fr!important}
+  .toolbar>*{width:100%!important;min-width:0!important}
+  .locationSearchRow{grid-template-columns:1fr!important}
+  .locationTop{align-items:flex-start}
+  .locationTop .btn{width:100%}
+}
+@media (max-width:380px){
+  .pageTitle{font-size:18px!important}
+  .sub{font-size:9px!important}
+  .btn{font-size:9px!important;padding:8px 9px!important}
+  .kValue{font-size:21px!important}
+}
 
 
-<style>
-  .matchedContact{
-    margin-top:8px;padding:9px 10px;border-radius:9px;
-    background:#f8fafc;border:1px solid var(--line);
-    font-size:8px;color:var(--muted);line-height:1.55
-  }
-  .matchedContact b{color:var(--navy)}
-  .contactActions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-  .contactActions .btn{font-size:8px}
-  .matchBadge{
-    display:inline-block;padding:4px 7px;border-radius:12px;
-    background:var(--greenbg);color:var(--green);
-    font-size:7px;font-weight:800;margin-left:5px
-  }
-  .userIdentity{
-    padding:12px;border:1px solid var(--line);border-radius:12px;
-    background:#fafbfd;margin-top:12px
-  }
-  .userIdentity strong{display:block;color:var(--navy);font:800 13px Manrope}
-  .userIdentity span{display:block;color:var(--muted);font-size:8px;margin-top:3px}
-</style>
+.dataTableWrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.requestTable{min-width:760px}
+@media (max-width:650px){table{min-width:680px}}
 
-
-<style>
-  #userAvatar{
-    min-width:42px;
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    cursor:pointer;
-    font-weight:900;
-    letter-spacing:.2px;
-  }
-  #userAvatar:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.10)}
 </style>
 
 </head>
@@ -189,7 +212,11 @@ table{width:100%;border-collapse:collapse}th{background:#fafbfd;color:var(--mute
   <button data-page="settings"><span>⚙</span><span>Settings</span></button>
 
  </nav>
+
+ <div class="sideBottom"><div class="live"><span class="dot"></span>System Status: <b>LIVE</b></div></div>
+
 </aside>
+<div class="sidebarBackdrop" id="sidebarBackdrop" onclick="closeMobileMenu()"></div>
 
 
 
@@ -205,9 +232,9 @@ table{width:100%;border-collapse:collapse}th{background:#fafbfd;color:var(--mute
 
   <button class="iconBtn" onclick="go('notifications')">🔔<span class="badge" id="notifCount">4</span></button>
 
-  <span class="role" id="userRole">USER</span>
+  <span class="role">ADMIN</span>
 
-  <button class="avatar" id="userAvatar" onclick="openLogin()" title="User Login">U</button>
+  <button class="avatar" onclick="openLogin()">NK</button>
 
  </div>
 
@@ -267,7 +294,7 @@ table{width:100%;border-collapse:collapse}th{background:#fafbfd;color:var(--mute
 
  <div class="card panel" style="overflow:auto">
 
-  <table><thead><tr><th>REQUEST</th><th>BLOOD</th><th>HOSPITAL</th><th>URGENCY</th><th>STATUS</th><th>DISTANCE</th><th>ETA</th><th>ACTION</th></tr></thead>
+  <table class="requestTable"><thead><tr><th>REQUEST</th><th>BLOOD</th><th>HOSPITAL</th><th>URGENCY</th><th>STATUS</th><th>DISTANCE</th><th>ETA</th><th>ACTION</th></tr></thead>
 
   <tbody id="requestTable"></tbody></table>
 
@@ -289,7 +316,7 @@ table{width:100%;border-collapse:collapse}th{background:#fafbfd;color:var(--mute
 
  <div class="pageTitle">Emergency Requests</div><div class="sub">Create, broadcast and track critical blood requests.</div>
 
- <div class="toolbar"><button class="btn red" onclick="openEmergency()">＋ New Emergency Request</button><button class="btn light" onclick="broadcastAll()">Broadcast Pending Requests</button><select><option>All Urgency</option><option>Critical</option><option>High</option></select><select><option>All Status</option><option>AI Matching</option><option>Match Found</option></select></div>
+ <div class="toolbar"><button class="btn red" onclick="openEmergency()">＋ New Emergency Request</button><button class="btn light" onclick="broadcastAll()">Broadcast Pending Requests</button><select id="emergencyUrgencyFilter"><option>All Urgency</option><option>Critical</option><option>High</option><option>Urgent</option></select><select id="emergencyStatusFilter"><option>All Status</option><option>AI Matching</option><option>Match Found</option><option>Fulfilment Initiated</option><option>Completed</option></select></div>
 
  <div class="card panel" style="overflow:auto"><table><thead><tr><th>REQUEST ID</th><th>BLOOD</th><th>UNITS</th><th>PATIENT / HOSPITAL</th><th>LOCATION</th><th>URGENCY</th><th>STATUS</th><th>ETA</th><th>ACTION</th></tr></thead><tbody id="emergencyTable"></tbody></table></div>
 
@@ -351,7 +378,7 @@ table{width:100%;border-collapse:collapse}th{background:#fafbfd;color:var(--mute
 
  <div class="pageTitle">Blood Inventory</div><div class="sub">Every blood group is tracked separately with availability, reservations, thresholds and expiry.</div>
 
- <div class="toolbar"><select><option>All Blood Groups</option><option>A+</option><option>A−</option><option>B+</option><option>B−</option><option>AB+</option><option>AB−</option><option>O+</option><option>O−</option></select><select><option>All Locations</option><option>Delhi</option><option>Noida</option><option>Gurugram</option></select><button class="btn dark">Export Inventory</button></div>
+ <div class="toolbar"><select id="inventoryGroupFilter"><option>All Blood Groups</option><option>A+</option><option>A−</option><option>B+</option><option>B−</option><option>AB+</option><option>AB−</option><option>O+</option><option>O−</option></select><select id="inventoryLocationFilter"><option>All Locations</option><option>Delhi</option><option>Noida</option><option>Gurugram</option></select><button class="btn dark" onclick="exportInventory()">Export Inventory</button></div>
 
  <div class="bloodCards" id="bloodCards"></div>
 
@@ -594,39 +621,15 @@ table{width:100%;border-collapse:collapse}th{background:#fafbfd;color:var(--mute
 
 
 
-<!-- User Login Modal -->
-<div class="modalWrap" id="loginModal">
-  <div class="modal login">
-    <div class="modalHead">
-      <h2>👤 User Login</h2>
-      <button class="close" onclick="closeModal('loginModal')">×</button>
-    </div>
-    <div class="modalBody">
-      <div id="loginStep">
-        <div class="field">
-          <label>USER NAME</label>
-          <input id="loginName" placeholder="Enter your name">
-        </div>
-        <div class="field" style="margin-top:10px">
-          <label>PHONE / MOBILE NUMBER</label>
-          <input id="phone" placeholder="+91 98765 43210">
-        </div>
-        <button class="btn red" style="width:100%;margin-top:12px" onclick="sendOTP()">Continue as User</button>
-        <div class="notice">User login uses the phone number for the verification step. Configure Firebase Phone Authentication for real OTP delivery.</div>
-      </div>
+<!-- Login modal -->
 
-      <div id="otpStep" class="otp">
-        <div class="field">
-          <label>ENTER OTP</label>
-          <input id="otp" maxlength="6" inputmode="numeric" placeholder="123456">
-        </div>
-        <button class="btn dark" style="width:100%;margin-top:12px" onclick="verifyOTP()">Verify & Login</button>
-      </div>
+<div class="modalWrap" id="loginModal"><div class="modal login"><div class="modalHead"><h2>🔐 BloodBridge Login</h2><button class="close" onclick="closeModal('loginModal')">×</button></div><div class="modalBody">
 
-      <div id="loginUserSummary" class="notice" style="display:none;margin-top:12px"></div>
-    </div>
-  </div>
-</div>
+<div id="loginStep"><div class="field"><label>PHONE / MOBILE NUMBER</label><input id="phone" placeholder="+91 98765 43210"></div><button class="btn red" style="width:100%;margin-top:12px" onclick="sendOTP()">Send OTP</button><div class="notice">Prototype authentication uses a backend demo OTP. Production deployments should connect an approved OTP provider.</div></div>
+
+<div id="otpStep" class="otp"><div class="field"><label>ENTER OTP</label><input id="otp" maxlength="6" placeholder="123456"></div><button class="btn dark" style="width:100%;margin-top:12px" onclick="verifyOTP()">Verify & Login</button></div>
+
+</div></div></div>
 
 
 
@@ -662,7 +665,7 @@ let requests=[
 
 ];
 
-let donors=[
+const donors=[
 
  ["Aarav Sharma","O+","98765 10001","Delhi","Eligible","Available","12 Jul 2026"],
 
@@ -710,7 +713,7 @@ const banks=[
 
 ];
 
-let notifications=[
+const notifications=[
 
  ["🔴","Critical Blood Request","O− required at City Hospital.","2 min ago","critical"],
 
@@ -726,7 +729,7 @@ let notifications=[
 
 ];
 
-let audit=[
+const audit=[
 
  ["19:24","System","AI Engine","Matched REQ-20481","REQ-20481","Success"],
 
@@ -784,7 +787,7 @@ function renderDonors(){
 
  const f=document.getElementById("donorFilter")?.value||"All Groups";
 
- document.getElementById("donorTable").innerHTML=donors.filter(d=>(!q||d[0].toLowerCase().includes(q))&&(f==="All Groups"||d[1]===f)).map(d=>`<tr><td><b>${d[0]}</b></td><td><span class="blood">${d[1]}</span></td><td>${d[2]}</td><td>${d[3]}</td><td><span class="status ok">${d[4]}</span></td><td><span class="status info">${d[5]}</span></td><td>${d[6]}</td><td><button class="btn dark" onclick="openContactDetails('${d[0]}','${d[1]}','${d[3]}')">Contact</button></td></tr>`).join("");
+ document.getElementById("donorTable").innerHTML=donors.filter(d=>(!q||d[0].toLowerCase().includes(q))&&(f==="All Groups"||d[1]===f)).map(d=>`<tr><td><b>${d[0]}</b></td><td><span class="blood">${d[1]}</span></td><td>${d[2]}</td><td>${d[3]}</td><td><span class="status ok">${d[4]}</span></td><td><span class="status info">${d[5]}</span></td><td>${d[6]}</td><td><button class="btn dark" onclick="contactDonor('${d[0]}')">Contact</button></td></tr>`).join("");
 
 }
 
@@ -798,45 +801,28 @@ function openEmergency(){document.getElementById("emergencyModal").classList.add
 
 function closeModal(id){document.getElementById(id).classList.remove("show")}
 
-async function sendEmergency(){
-  const g=document.getElementById("reqGroup").value;
-  const u=Number(document.getElementById("reqUnits").value);
-  const h=document.getElementById("reqHospital").value.trim();
-  const loc=document.getElementById("reqLocation").value.trim();
-  const urg=document.getElementById("urgency").value;
-  const note=document.getElementById("reqNote").value.trim();
-  const patientName=document.getElementById("patientName").value.trim();
+function sendEmergency(){
 
-  if(!g||!u||!h){alert("Please complete the blood group, units and hospital fields.");return;}
+ const g=document.getElementById("reqGroup").value,u=document.getElementById("reqUnits").value,h=document.getElementById("reqHospital").value;
 
-  const id="REQ-"+Date.now().toString().slice(-8);
-  const localRequest={id,group:g,units:u,hospital:h,loc,urg,status:"AI MATCHING",dist:"Calculating",eta:"Calculating",note};
-  requests.unshift(localRequest);
+ const id="REQ-"+Math.floor(20500+Math.random()*400);
 
-  ["rBank1","rDonor","rMonthly"].forEach(x=>document.getElementById(x).classList.add("sent"));
+ requests.unshift({id,group:g,units:+u,hospital:h,loc:document.getElementById("reqLocation").value,urg:document.getElementById("urgency").value,status:"AI MATCHING",dist:"Calculating",eta:"Calculating"});
 
-  try{
-    if(window.BloodBridgeDB?.createEmergency){
-      await window.BloodBridgeDB.createEmergency({
-        ...localRequest,
-        patientName,
-        createdAt:new Date().toISOString()
-      });
-      
-    }else{
-      audit.unshift([new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),"Admin","Emergency","Created emergency request",id,"Local"]);
-      notifications.unshift(["🔴","Critical Blood Request",`${g} required at ${h}.`,"Just now","critical"]);
-    }
+ ["rBank1","rDonor","rMonthly"].forEach(x=>document.getElementById(x).classList.add("sent"));
 
-    renderRequests();renderCards();
-    document.getElementById("notifCount").textContent=String(notifications.length);
-    closeModal("emergencyModal");go("emergency");
-    alert(`Emergency ${id} created.\n\nFirebase backend event queued for:\n• Nearby verified blood banks\n• Eligible nearby donors\n• Monthly donor opt-in group`);
-  }catch(err){
-    console.error(err);
-    requests=requests.filter(r=>r.id!==id);
-    alert("Could not save the emergency request to Firebase. Check Realtime Database rules and network connection.");
-  }
+ audit.unshift([new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}),"Admin","Emergency","Broadcast emergency alert",id,"Success"]);
+
+ notifications.unshift(["🔴","Critical Blood Request",`${g} required at ${h}. Alert broadcast to nearest blood banks, eligible donors and monthly donor opt-in group.`,"Just now","critical"]);
+
+ document.getElementById("notifCount").textContent=notifications.length;
+
+ renderRequests();renderCards();
+
+ closeModal("emergencyModal");go("emergency");
+
+ alert(`Emergency ${id} created.\n\nSimulated simultaneous broadcast sent to:\n• Nearest verified blood banks\n• Eligible nearby donors\n• Monthly donor opt-in group\n\nA production backend would deliver this through WebSocket + push/SMS/email services.`);
+
 }
 
 function broadcastAll(){alert("Pending emergency requests broadcast to matched recipients in this prototype.")}
@@ -849,7 +835,7 @@ function runMatch(){
 
  document.getElementById("abo").textContent=compatible?"PASS":"REVIEW";
 
- document.getElementById("rh").textContent=(p.endsWith("+")&&d.endsWith("−"))?"REVIEW":"PASS";
+ document.getElementById("rh").textContent=((p.endsWith("+")&&d.endsWith("−"))||(p.endsWith("−")&&d.endsWith("+")) )?"REVIEW":"PASS";
 
  document.getElementById("cross").textContent=compatible?"LAB REQUIRED":"NOT SUITABLE";
 
@@ -883,176 +869,15 @@ function detectLocation(){useMyLocation()}
 
 function mapInfo(name,type,distance,detail){const el=document.getElementById("mapInfo");el.style.display="block";el.innerHTML=`<b style="font:800 14px Manrope;color:var(--navy)">${name}</b><p style="font-size:9px;color:var(--muted)">${type} • ${distance}</p><p style="font-size:10px">${detail}</p><button class="btn dark" onclick="alert('Navigation/contact action opened in production.')">Open Details</button>`}
 
+function contactDonor(n){alert(`Contact workflow opened for ${n}. In production this would use the donor's consented notification channel.`)}
 
-function findDonorRecordByName(name){
-  const list=window.BloodBridgeData?.donors||[];
-  return list.find(d=>String(d.name||"").toLowerCase()===String(name||"").toLowerCase())
-    || (typeof registeredDonors!=="undefined"
-      ? registeredDonors.find(d=>String(d.name||"").toLowerCase()===String(name||"").toLowerCase())
-      : null);
-}
+function markRead(){document.getElementById("notifCount").textContent="0";alert("All notifications marked as read.")}
 
-function openContactDetails(name, group="", location=""){
-  const donor=findDonorRecordByName(name) || {
-    name, group, location, phone:"Not available", email:"Not available",
-    availability:"Available", verificationStatus:"Eligible"
-  };
+function sendOTP(){document.getElementById("loginStep").style.display="none";document.getElementById("otpStep").style.display="block";alert("Demo OTP: 123456")}
 
-  const phone=donor.phone||"Not available";
-  const email=donor.email||"Not available";
-  const loc=donor.location||location||"Not provided";
-  const blood=donor.group||donor.bloodGroup||group||"";
-  const verified=donor.verificationStatus||donor.eligibility||"Pending Verification";
+function verifyOTP(){if(document.getElementById("otp").value==="123456"){closeModal("loginModal");document.querySelector(".role").textContent="ADMIN • VERIFIED";alert("Login successful.");}else alert("Use demo OTP 123456.")}
 
-  const phoneButton=phone!=="Not available"
-    ? `<a class="btn dark" href="tel:${escapeHtml(phone)}">☎ Call ${escapeHtml(phone)}</a>`
-    : "";
-
-  const emailButton=email!=="Not available"
-    ? `<a class="btn light" href="mailto:${escapeHtml(email)}">✉ Email</a>`
-    : "";
-
-  document.getElementById("contactModalBody").innerHTML=`
-    <div class="userIdentity">
-      <strong>${escapeHtml(donor.name||name||"Matched Donor")} <span class="matchBadge">MATCHED</span></strong>
-      <span>${escapeHtml(blood)} • ${escapeHtml(verified)} • ${escapeHtml(donor.availability||"Available")}</span>
-    </div>
-
-    <div class="cards3" style="margin-top:12px">
-      <div class="card listCard">
-        <span class="status ok">CONTACT</span>
-        <h3>${escapeHtml(phone)}</h3>
-        <p>Registered mobile number</p>
-      </div>
-      <div class="card listCard">
-        <span class="status info">EMAIL</span>
-        <h3 style="word-break:break-word">${escapeHtml(email)}</h3>
-        <p>Registered email address</p>
-      </div>
-      <div class="card listCard">
-        <span class="status warn">LOCATION</span>
-        <h3>${escapeHtml(loc)}</h3>
-        <p>Registered donor location</p>
-      </div>
-    </div>
-
-    <div class="matchedContact">
-      <b>Matched contact information</b><br>
-      These details are shown because this donor was selected as a matching candidate.
-      Contact should follow the donor's consent and your organisation's approved workflow.
-    </div>
-
-    <div class="contactActions">
-      ${phoneButton}
-      ${emailButton}
-      <button class="btn light" onclick="closeModal('contactModal')">Close</button>
-    </div>
-  `;
-  document.getElementById("contactModal").classList.add("show");
-}
-
-function contactDonor(n){
-  openContactDetails(n);
-}
-
-function sendOTP(){
-  const name=(document.getElementById("loginName")?.value||"").trim();
-  const phone=(document.getElementById("phone")?.value||"").trim();
-
-  if(!name){
-    alert("Please enter your user name.");
-    return;
-  }
-  if(!phone){
-    alert("Please enter your mobile number.");
-    return;
-  }
-
-  document.getElementById("loginStep").style.display="none";
-  document.getElementById("otpStep").style.display="block";
-  alert("Demo OTP: 123456");
-}
-
-
-function getUserInitials(name){
-  const clean=String(name||"").trim().replace(/\s+/g," ");
-  if(!clean) return "U";
-  const parts=clean.split(" ").filter(Boolean);
-  if(parts.length===1){
-    return parts[0].slice(0,2).toUpperCase();
-  }
-  return (parts[0][0]+parts[parts.length-1][0]).toUpperCase();
-}
-
-function updateHeaderUser(name, phone=""){
-  const role=document.getElementById("userRole");
-  const avatar=document.getElementById("userAvatar");
-  const cleanName=String(name||"User").trim() || "User";
-
-  if(role) role.textContent="USER";
-  if(avatar){
-    avatar.textContent=getUserInitials(cleanName);
-    avatar.title=`${cleanName}${phone ? " • "+phone : ""}`;
-    avatar.setAttribute("aria-label",`Logged in user: ${cleanName}`);
-  }
-}
-
-function verifyOTP(){
-  const otp=(document.getElementById("otp")?.value||"").trim();
-  const name=(document.getElementById("loginName")?.value||"User").trim();
-  const phone=(document.getElementById("phone")?.value||"").trim();
-
-  if(otp!=="123456"){
-    alert("Use demo OTP 123456.");
-    return;
-  }
-
-  closeModal("loginModal");
-
-  updateHeaderUser(name,phone);
-
-  const summary=document.getElementById("loginUserSummary");
-  if(summary){
-    summary.style.display="block";
-    summary.innerHTML=`Signed in as <b>${escapeHtml(name)}</b> • ${escapeHtml(phone)}`;
-  }
-
-  window.BloodBridgeUser={
-    name,
-    phone,
-    loggedIn:true,
-    loggedInAt:Date.now()
-  };
-
-  try{
-    localStorage.setItem("bloodbridgeUser",JSON.stringify(window.BloodBridgeUser));
-  }catch(_){}
-
-  if(window.BloodBridgeDB?.writeAudit){
-    window.BloodBridgeDB.writeAudit(
-      "User login",
-      "Authentication",
-      phone,
-      {userName:name},
-      name
-    );
-  }
-
-  alert(`Welcome ${name}. You are now logged in as User.`);
-}
-
-function openLogin(){
-  document.getElementById("loginModal").classList.add("show");
-
-  try{
-    const saved=JSON.parse(localStorage.getItem("bloodbridgeUser")||"null");
-    if(saved?.name){
-      document.getElementById("loginName").value=saved.name;
-      document.getElementById("phone").value=saved.phone||"";
-    }
-  }catch(_){}
-}
-
+function openLogin(){document.getElementById("loginModal").classList.add("show")}
 
 document.getElementById("donorSearch").addEventListener("input",renderDonors);
 
@@ -1960,22 +1785,7 @@ function runAIDecisionEngine(){
   document.getElementById('aiCandidates').innerHTML=candidates.slice(0,8).map((c,i)=>{
     const donor=c.bestDonor;
     const status=c.clinical?'COMPATIBLE FOR REVIEW':'NOT COMPATIBLE';
-    return `<div class="aiCandidate">
-      <div>
-        <strong>#${i+1} • ${safeEscape(c.group)} • ${status}${c.clinical?` <span class="matchBadge">MATCHED</span>`:""}</strong>
-        <small>Inventory: ${c.inventory.toLocaleString()} units • Donor: ${safeEscape(donor?.[0]||'Network pool')} • Donor location: ${safeEscape(c.donorLocation||'Not provided')} • Patient/facility location factor included.</small>
-        <small>ABO ${c.factors.abo?'PASS':'FAIL'} • Rh ${c.factors.rh?'PASS':'REVIEW'} • Component ${Math.round(c.factors.component*100)}% • Antibody ${Math.round(c.factors.antibodies*100)}% • History ${Math.round(c.factors.history*100)}% • Inventory ${Math.round(c.factors.inventory*100)}%</small>
-        ${c.clinical && donor ? `
-          <div class="matchedContact">
-            <b>Matched contact:</b> ${safeEscape(donor[2]||"Phone not available")} • ${safeEscape(donor[3]||"Location not available")}
-            <div class="contactActions">
-              <button class="btn dark" onclick="openContactDetails('${safeEscape(donor[0])}','${safeEscape(c.group)}','${safeEscape(donor[3]||"")}')">📞 View Contact Details</button>
-              ${donor[2] ? `<a class="btn light" href="tel:${safeEscape(donor[2])}">Call</a>` : ""}
-            </div>
-          </div>` : ""}
-      </div>
-      <div class="aiCandidateScore">${c.score.toFixed(1)}%</div>
-    </div>`;
+    return `<div class="aiCandidate"><div><strong>#${i+1} • ${safeEscape(c.group)} • ${status}</strong><small>Inventory: ${c.inventory.toLocaleString()} units • Donor: ${safeEscape(donor?.[0]||'Network pool')} • Donor location: ${safeEscape(c.donorLocation||'Not provided')} • Patient/facility location factor included.</small><small>ABO ${c.factors.abo?'PASS':'FAIL'} • Rh ${c.factors.rh?'PASS':'REVIEW'} • Component ${Math.round(c.factors.component*100)}% • Antibody ${Math.round(c.factors.antibodies*100)}% • History ${Math.round(c.factors.history*100)}% • Inventory ${Math.round(c.factors.inventory*100)}%</small></div><div class="aiCandidateScore">${c.score.toFixed(1)}%</div></div>`;
   }).join('');
 }
 function resetAIDecision(){
@@ -1987,125 +1797,52 @@ function resetAIDecision(){
   document.getElementById('aiCandidates').innerHTML='<div class="notice">Run the AI Decision Engine to generate ranked candidates.</div>';
 }
 
-async function registerDonor(e){
+function registerDonor(e){
   e.preventDefault();
   const donor={
-    name:document.getElementById('regName').value.trim(),
-    dob:document.getElementById('regDob').value,
-    gender:document.getElementById('regGender').value,
-    phone:document.getElementById('regPhone').value.trim(),
-    email:document.getElementById('regEmail').value.trim(),
-    group:document.getElementById('regBloodGroup').value,
-    location:document.getElementById('regLocation').value.trim(),
-    availability:document.getElementById('regAvailability').value,
-    lastDonation:document.getElementById('regLastDonation').value||'Not provided',
-    donationType:document.getElementById('regDonationType').value,
-    centre:document.getElementById('regCentre').value.trim(),
-    emergencyContact:document.getElementById('regEmergencyContact').value.trim(),
-    notes:document.getElementById('regNotes').value.trim(),
-    consent:true
+    name:document.getElementById('regName').value.trim(),group:document.getElementById('regBloodGroup').value,phone:document.getElementById('regPhone').value.trim(),location:document.getElementById('regLocation').value.trim(),availability:document.getElementById('regAvailability').value,lastDonation:document.getElementById('regLastDonation').value||'Not provided'
   };
-
-  if(!donor.name||!donor.group||!donor.phone||!donor.location){
-    alert('Please complete all required donor fields.');return;
-  }
-
-  try{
-    let donorId=`BB-${Date.now().toString().slice(-8)}`;
-    if(window.BloodBridgeDB?.registerDonor){
-      donorId=await window.BloodBridgeDB.registerDonor(donor);
-    }else{
-      donors.unshift([donor.name,donor.group,donor.phone,donor.location,'Pending Verification',donor.availability,donor.lastDonation]);
-      registeredDonors.push(donor);
-      renderDonors();
-    }
-
-    const success=document.getElementById('donorSuccess');
-    success.style.display='block';
-    success.textContent=`✓ ${donor.name} has been registered successfully. Donor ID: ${donorId}. The profile is pending verification before it can be treated as medically eligible.`;
-    document.getElementById('donorRegistrationForm').reset();
-  }catch(err){
-    console.error(err);
-    alert("Donor registration could not be saved to Firebase. Check Realtime Database rules and network connection.");
-  }
+  if(!donor.name||!donor.group||!donor.phone||!donor.location){alert('Please complete all required donor fields.');return;}
+  donors.unshift([donor.name,donor.group,donor.phone,donor.location,'Pending Verification',donor.availability,donor.lastDonation]);
+  registeredDonors.push(donor);
+  renderDonors();
+  const success=document.getElementById('donorSuccess');
+  success.style.display='block';success.textContent=`✓ ${donor.name} has been registered successfully. Donor ID: BB-${Date.now().toString().slice(-6)}. The profile is pending verification before it can be treated as medically eligible.`;
+  document.getElementById('donorRegistrationForm').reset();
 }
 
 // Allow the existing donor table to safely display the expanded registration state.
-</script>
 
-
-<!-- Matched Contact Details Modal -->
-<div class="modalWrap" id="contactModal">
-  <div class="modal">
-    <div class="modalHead">
-      <h2>📞 Matched Contact Details</h2>
-      <button class="close" onclick="closeModal('contactModal')">×</button>
-    </div>
-    <div class="modalBody" id="contactModalBody">
-      <div class="notice">No matched contact selected.</div>
-    </div>
-  </div>
-</div>
-
-<!-- =========================================================
-     FIREBASE BACKEND
-     Firebase client SDK + Firestore realtime data layer.
-     Replace/extend Firestore Security Rules in Firebase Console
-     before using this in production.
-========================================================= -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
-import { getDatabase, ref, push, set, update, onValue, get } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
-import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
-
-const firebaseConfig={apiKey:"AIzaSyAQ9zMJ-v7JJWGWRwX1Y8bf34bp5P9vANM",authDomain:"blood-bank-6c81b.firebaseapp.com",databaseURL:"https://blood-bank-6c81b-default-rtdb.firebaseio.com",projectId:"blood-bank-6c81b",storageBucket:"blood-bank-6c81b.firebasestorage.app",messagingSenderId:"242178626363",appId:"1:242178626363:web:967490f579de5b549a5d1e",measurementId:"G-KZ0F745PJ1"};
-const app=initializeApp(firebaseConfig), db=getDatabase(app), auth=getAuth(app);
-if(await isSupported()){try{getAnalytics(app)}catch(e){console.warn(e)}}
-const COLLECTIONS={requests:"bloodbridge/requests",donors:"bloodbridge/donors",inventory:"bloodbridge/inventory",notifications:"bloodbridge/notifications",audit:"bloodbridge/audit",broadcasts:"bloodbridge/broadcasts"};
-let currentUser=null;
-const now=()=>Date.now();
-const clean=x=>JSON.parse(JSON.stringify(x));
-async function ensureAuth(){if(auth.currentUser){currentUser=auth.currentUser;return currentUser} await signInAnonymously(auth); currentUser=auth.currentUser; return currentUser}
-async function pushData(path,data){await ensureAuth();const r=push(ref(db,path));const payload={...clean(data),createdAt:data.createdAt||now(),updatedAt:now(),createdBy:currentUser?.uid||null};await set(r,payload);return {key:r.key,...payload}}
-async function setData(path,data){await ensureAuth();await set(ref(db,path),{...clean(data),updatedAt:now(),updatedBy:currentUser?.uid||null})}
-async function writeAudit(action,entity,entityId,details={},actor="System"){try{await pushData(COLLECTIONS.audit,{action,entity,entityId,details,actor,role:"USER"})}catch(e){console.error(e)}}
-async function notify(type,title,message,extra={}){return pushData(COLLECTIONS.notifications,{type,title,message,read:false,...extra})}
-async function createEmergency(data){await ensureAuth();const id=data.id||`REQ-${now().toString().slice(-8)}`;const payload={...clean(data),id,units:Number(data.units||1),status:"AI MATCHING",broadcastStatus:"PENDING"};await setData(`${COLLECTIONS.requests}/${id}`,payload);await pushData(COLLECTIONS.broadcasts,{requestId:id,type:"EMERGENCY",recipients:{bloodBanks:true,eligibleDonors:true,monthlyDonors:true},status:"QUEUED",bloodGroup:data.group,units:Number(data.units||1),hospital:data.hospital,location:data.loc||data.location||"",urgency:data.urgency||data.urg||"HIGH"});await notify("critical","Critical Blood Request",`${data.group} required at ${data.hospital}. Emergency broadcast queued.`,{requestId:id});await writeAudit("Broadcast emergency alert","Emergency",id,{bloodGroup:data.group,units:data.units,hospital:data.hospital},"Admin");return id}
-async function registerDonorBackend(data){const id=`BB-${now().toString().slice(-8)}`;await setData(`${COLLECTIONS.donors}/${id}`,{...clean(data),donorId:id,verificationStatus:data.verificationStatus||"Pending Verification",createdAt:now()});await notify("info","New Donor Registration",`${data.name||"Donor"} registered as ${data.group||data.bloodGroup}.`,{donorId:id});await writeAudit("Registered donor","Donor",id,{bloodGroup:data.group||data.bloodGroup,location:data.location},"Admin");return id}
-async function updateInventoryBackend(group,patch){const id=encodeURIComponent(group);await setData(`${COLLECTIONS.inventory}/${id}`,{group,...clean(patch)});await writeAudit("Updated inventory","Blood Inventory",group,patch,"Admin")}
-async function markNotificationReadBackend(id){await update(ref(db,`${COLLECTIONS.notifications}/${id}`),{read:true,readAt:now(),readBy:currentUser?.uid||null,updatedAt:now()})}
-function arr(x){return [x.id,x.group,Number(x.units||0),x.hospital||"",x.loc||x.location||"",x.urg||x.urgency||"URGENT",x.status||"AI MATCHING",x.dist||"Calculating",x.eta||"Calculating",x.note||""]}
-function donorArr(x){return [x.name||"",x.group||x.bloodGroup||"",x.phone||"",x.location||"",x.verificationStatus||"Pending Verification",x.availability||"Available",x.lastDonation||"Not provided"]}
-function watch(path,cb){return onValue(ref(db,path),snap=>cb(snap.exists()?snap.val():{}),e=>{console.error(path,e);})}
-function bindRealtime(){
- watch(COLLECTIONS.requests,data=>{const list=Object.values(data||{}).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));window.BloodBridgeData={...(window.BloodBridgeData||{}),requests:list};if(typeof requests!=="undefined"){requests=list.map(arr);if(typeof renderRequests==='function')renderRequests()}});
- watch(COLLECTIONS.donors,data=>{const list=Object.values(data||{}).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));window.BloodBridgeData={...(window.BloodBridgeData||{}),donors:list};if(typeof donors!=="undefined"){donors=list.map(donorArr);if(typeof renderDonors==='function')renderDonors()}});
- watch(COLLECTIONS.inventory,data=>{const o={};Object.values(data||{}).forEach(d=>{if(d.group)o[d.group]={available:Number(d.available||0),reserved:Number(d.reserved||0),threshold:Number(d.threshold||0),expiry:Number(d.expiry||0),status:d.status||"AVAILABLE"}});window.BloodBridgeData={...(window.BloodBridgeData||{}),inventory:o};if(Object.keys(o).length&&typeof bloodData!=='undefined'){Object.assign(bloodData,o);if(typeof renderInventory==='function')renderInventory()}});
- watch(COLLECTIONS.notifications,data=>{const list=Object.entries(data||{}).map(([id,n])=>({...n,docId:id})).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));window.BloodBridgeData={...(window.BloodBridgeData||{}),notifications:list};if(typeof notifications!=='undefined'){notifications=list.map(n=>[n.type==='critical'?"🔴":n.type==='warn'?"🟠":n.type==='ok'?"🟢":"🔵",n.title||"Notification",n.message||"",new Date(n.createdAt||now()).toLocaleString(),n.type||"info"]);if(typeof renderCards==='function')renderCards();const e=document.getElementById('notifCount');if(e)e.textContent=String(list.filter(n=>!n.read).length)}});
- watch(COLLECTIONS.audit,data=>{const list=Object.values(data||{}).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));window.BloodBridgeData={...(window.BloodBridgeData||{}),audit:list};if(typeof audit!=='undefined'){audit=list.map(a=>[new Date(a.createdAt||now()).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}),a.actor||"System",a.entity||"System",a.action||"",a.entityId||"",a.status||"Success"]);if(typeof renderCards==='function')renderCards()}});
+/* ===== ROUND 3: MOBILE NAVIGATION ===== */
+function toggleMobileMenu(){
+  const sb=document.querySelector(".sidebar");
+  const btn=document.getElementById("mobileMenuBtn");
+  if(!sb) return;
+  const open=sb.classList.toggle("mobileOpen");
+  if(btn) btn.setAttribute("aria-expanded",open?"true":"false");
+  document.body.style.overflow=open?"hidden":"";
 }
-async function bootFirebase(){try{await ensureAuth();;bindRealtime();window.BloodBridgeDB={app,db,auth,COLLECTIONS,hydrated:true,createEmergency,registerDonor:registerDonorBackend,updateInventory:updateInventoryBackend,markNotificationRead:markNotificationReadBackend,writeAudit,getCurrentUser:()=>currentUser};window.dispatchEvent(new CustomEvent('bloodbridge:firebase-ready'));}catch(e){console.error(e);}}
-window.BloodBridgeBackend={createEmergency,registerDonor:registerDonorBackend,updateInventory:updateInventoryBackend,markNotificationRead:markNotificationReadBackend,notify,writeAudit};
-bootFirebase();
+function closeMobileMenu(){
+  const sb=document.querySelector(".sidebar");
+  const btn=document.getElementById("mobileMenuBtn");
+  if(sb) sb.classList.remove("mobileOpen");
+  if(btn) btn.setAttribute("aria-expanded","false");
+  document.body.style.overflow="";
+}
+window.addEventListener("resize",()=>{if(window.innerWidth>950) closeMobileMenu();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape") closeMobileMenu();});
+
+/* Close the mobile drawer after navigation. */
+const _originalGo = window.go;
+if(typeof _originalGo==="function"){
+  window.go=function(page){
+    const result=_originalGo.apply(this,arguments);
+    closeMobileMenu();
+    return result;
+  };
+}
+
 </script>
-
-
-<script>
-window.addEventListener("DOMContentLoaded",()=>{
-  try{
-    const saved=JSON.parse(localStorage.getItem("bloodbridgeUser")||"null");
-    if(saved?.loggedIn && saved.name){
-      window.BloodBridgeUser=saved;
-      updateHeaderUser(saved.name,saved.phone||"");
-    }else{
-      updateHeaderUser("User","");
-    }
-  }catch(_){
-    updateHeaderUser("User","");
-  }
-});
-</script>
-
+<script src="/api-bridge.js" defer></script>
 </body>
 </html>
